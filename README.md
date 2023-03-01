@@ -8,6 +8,7 @@
 
 <img src="exemplo1.png" alt="Exemplo do Projeto">
 <img src="exemplo2.png" alt="Exemplo do Projeto">
+<img src="exemplo3.png" alt="Exemplo do Projeto">
 
 # ☕ Descrição do Projeto
 
