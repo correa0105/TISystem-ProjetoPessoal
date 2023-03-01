@@ -6,9 +6,8 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/correa0105/TISystem-ProjetoPessoal?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/correa0105/TISystem-ProjetoPessoal?style=for-the-badge)
 
-<img src="exemplo1.PNG" alt="Exemplo do Projeto">
-<img src="exemplo2.PNG" alt="Exemplo do Projeto">
-<img src="exemplo3.PNG" alt="Exemplo do Projeto">
+<img src="exemplo1.png" alt="Exemplo do Projeto">
+<img src="exemplo2.png" alt="Exemplo do Projeto">
 
 # ☕ Descrição do Projeto
 
