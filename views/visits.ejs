@@ -1,0 +1,85 @@
+<%- include("includes/head"); %>
+<%- include("partials/header"); %>
+
+<div class="visits">
+
+    <form action="/visits/add" class="visit-container" method="POST">
+        <div class="container-form-container">
+            <div class="form-container">
+                <label for="local">Unidade</label>
+                <select name="local" id="local">
+                    <option value="Bento">Bento</option>
+                    <option value="Protasio">Protasio</option>
+                    <option value="Cavalhada">Cavalhada</option>
+                    <option value="Azenha">Azenha</option>
+                    <option value="Andradas">Andradas</option>
+                    <option value="24 de Outubro">24 de Outubro</option>
+                    <option value="Dr Flores">Dr Flores</option>
+                    <option value="Zona Sul">Zona Sul</option>
+                    <option value="Alvorda">Alvorda</option>
+                    <option value="Viamão">Viamão</option>
+                    <option value="Cachoeirinha">Cachoeirinha</option>
+                    <option value="Gravatai Centro">Gravatai Centro</option>
+                    <option value="Gravatai 67">Gravatai 67</option>
+                    <option value="Canoas Centro">Canoas Centro</option>
+                    <option value="Boqueirão">Boqueirão</option>
+                    <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                    <option value="Novo Hamburgo">Novo Hamburgo</option>
+                    <option value="São Leopoldo">São Leopoldo</option>
+                    <option value="Caxias Centro">Caxias Centro</option>
+                    <option value="Caxias Shoppin">Caxias Shopping</option>
+                    <option value="Menino Deus">Menino Deus</option>
+                    <option value="Tri Esportes">Tri Esportes</option>
+                    <option value="Orla">Orla</option>
+                </select>
+            </div>
+            <div class="form-container">
+                <label for="date">Data</label>
+                <input type="date" name="date">
+            </div>
+            <div class="form-container">
+                <label for="resume">Resumo</label>
+                <textarea name="resume" cols="30" rows="1"></textarea>
+            </div>
+        </div>
+        <input type="submit" class="submit" value="Agendar">
+    </form>
+
+    <div class="allVisits">
+        <table>
+            <tr>
+                <th>Unidade</th>
+                <th>Data</th>
+                <th>Resumo</th>
+                <th>Editar</th>
+            </tr>
+            <% for(let visit of visits) { %>
+            <tr>
+                <% if(visit.done){ %>
+                    <td class="visit done"><%= visit.local %></td>
+                    <td class="visit done"><%= visit.date %></td>
+                    <td class="visit done"><%= visit.resume %></td>
+                <% } else { %>
+                    <td><%= visit.local %></td>
+                    <td><%= visit.date %></td>
+                    <td><%= visit.resume %></td>
+                <% } %>
+                <td class="actions">
+                    <form action="/visits/updatestatus" method="POST">
+                        <input type="hidden" name="id" value="<%= visit.id %>">
+                        <input type="hidden" name="done" value="<%= visit.done %>">
+                        <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
+                    </form>
+                    <form action="/visits/remove" method="POST">
+                        <input type="hidden" name="id" value="<%= visit.id %>">
+                        <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+    
+</div>
+
+<%- include("includes/footer"); %>

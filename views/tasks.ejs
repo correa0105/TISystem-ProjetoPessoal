@@ -1,0 +1,148 @@
+<%- include("includes/head"); %>
+<%- include("partials/header"); %>
+
+<div class="tasks">
+
+    <div class="createTask">
+        <form action="/tasks/add" method="POST" class="task-container">
+            <div class="container-form-container">
+                <div class="form-container">
+                    <label for="title">Titulo</label>
+                    <input type="text" name="title" placeholder="Titulo da atividade">
+                </div>
+                <div class="form-container">
+                    <label for="priority">Prioridade</label>
+                    <select name="priority" id="priority">
+                        <option value="hight">Alta</option>
+                        <option value="medium">Média</option>
+                        <option value="low">Baixa</option>
+                    </select>
+                </div>
+                <div class="form-container">
+                    <label for="description">Descrição</label>
+                    <textarea name="description" id="" cols="30" rows="1" placeholder="Descreva a atividade"></textarea>
+                </div>
+            </div>
+            <input type="submit" class="submit" value="Registrar">
+        </form>
+    </div>
+
+
+    <div class="allTasks">
+
+        <div class="container-priority">
+            <div class="headerPriority">
+                <div class="containerPriorityIcon">
+                    <h4>Alta Prioridade</h4>
+                    <span class="hight"><i class="bi bi-bookmark-fill"></i></span>
+                </div>
+                <span class="qntdUnsolved"><%= taskHight %></span>
+            </div>
+            <ul>
+                <% for(let task of tasks) { %>
+                    
+                    <% if(task.priority === 'hight'){ %>
+                        <li>
+                            <% if(task.done){ %>
+                                <a href="" class="title done"><%= task.title %></a>
+                            <% } else { %>
+                                <a href=""><%= task.title %></a>
+                            <% } %>
+                            
+                            <div class="actions">
+                                <form action="/tasks/updatestatus" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <input type="hidden" name="done" value="<%= task.done %>">
+                                    <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
+                                </form>
+                                <form action="/tasks/remove" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
+                                </form>
+                                <a href="/tasks/edit/<%= task.id %>"><i class="bi bi-pen"></i></a>
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </div>
+    
+        <div class="container-priority">
+            <div class="headerPriority">
+                <div class="containerPriorityIcon">
+                    <h4>Media Prioridade</h4>
+                    <span class="medium"><i class="bi bi-bookmark-fill"></i></span>
+                </div>
+                <span class="qntdUnsolved"><%= taskMedium %></span>
+            </div>
+            <ul>
+                <% for(let task of tasks) { %>
+                    
+                    <% if(task.priority === 'medium'){ %>
+                        <li>
+                            <% if(task.done){ %>
+                                <a href="" class="title done"><%= task.title %></a>
+                            <% } else { %>
+                                <a href=""><%= task.title %></a>
+                            <% } %>
+                            
+                            <div class="actions">
+                                <form action="/tasks/updatestatus" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <input type="hidden" name="done" value="<%= task.done %>">
+                                    <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
+                                </form>
+                                <form action="/tasks/remove" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
+                                </form>
+                                <a href="/tasks/edit/<%= task.id %>"><i class="bi bi-pen"></i></a>
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </div>
+    
+        <div class="container-priority">
+            <div class="headerPriority">
+                <div class="containerPriorityIcon">
+                    <h4>Baixa Prioridade</h4>
+                    <span class="low"><i class="bi bi-bookmark-fill"></i></span>
+                </div>
+                <span class="qntdUnsolved"><%= taskLow %></span>
+            </div>
+            <ul>
+                <% for(let task of tasks) { %>
+                    
+                    <% if(task.priority === 'low'){ %>
+                        <li>
+                            <% if(task.done){ %>
+                                <a href="" class="title done"><%= task.title %></a>
+                            <% } else { %>
+                                <a href=""><%= task.title %></a>
+                            <% } %>
+                            
+                            <div class="actions">
+                                <form action="/tasks/updatestatus" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <input type="hidden" name="done" value="<%= task.done %>">
+                                    <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
+                                </form>
+                                <form action="/tasks/remove" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
+                                </form>
+                                <a href="/tasks/edit/<%= task.id %>"><i class="bi bi-pen"></i></a>
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </div>
+        
+    </div>
+
+</div>
+
+<%- include("includes/footer"); %>
