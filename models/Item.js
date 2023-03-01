@@ -3,7 +3,11 @@ const { DataTypes } = require('sequelize')
 const db = require('../db/conn')
 
 const Item = db.define('Item', {
-    name: {
+    item: {
+        type: DataTypes.STRING,
+        required: true
+    },
+    shop: {
         type: DataTypes.STRING,
         required: true
     },
@@ -15,12 +19,12 @@ const Item = db.define('Item', {
         type: DataTypes.STRING,
         required: true
     },
-    price: {
-        type: DataTypes.DOUBLE,
+    deliveryDate: {
+        type: DataTypes.STRING,
         required: true
     },
-    deliveryDate: {
-        type: DataTypes.DATE,
+    delivered: {
+        type: DataTypes.BOOLEAN,
         required: true
     }
 })

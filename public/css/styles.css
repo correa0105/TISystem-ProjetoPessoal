@@ -23,6 +23,11 @@ body {
     gap: .2rem;
 }
 
+.container-form-container {
+    display: flex;
+    gap: 1rem;
+}
+
 .form-container input, .form-container select, .form-container textarea {
     background: none;
     border: 1px solid #555;
@@ -40,7 +45,7 @@ textarea {
     padding: 5px;
 }
 
-.task-container, .visit-container {
+.task-container, .visit-container, .shopping-container {
     display: flex;
     background-color: aliceblue;
     padding: .5rem;
@@ -48,6 +53,15 @@ textarea {
     border-radius: 8px;
     width: 100%;
     justify-content: space-between;
+}
+
+.visits, .tasks, .shopping {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3rem;
 }
 
 .submit {
@@ -95,15 +109,6 @@ textarea {
 
 /* TAREFAS */
 
-.tasks {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 3rem;
-}
-
 .allTasks {
     display: flex;
     flex-direction: row;
@@ -114,7 +119,7 @@ textarea {
 
 .container-priority {
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 15px;
     background-color: rgb(64, 152, 234);
 }
@@ -189,48 +194,28 @@ textarea {
     margin-top: .3rem
 }
 
-.resumoTarefa {
-    overflow: hidden;
-    height: 0px;
-    transition: all ease-in-out;
-}
-
 /* VISITAS */
 
-.visits {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 3rem;
-}
-
-.container-form-container {
-    display: flex;
-    gap: 1rem;
-}
-
-.allVisits {
+.allVisits, .allItems {
     margin-top: 2rem;
     display: flex;
 }
 
-.allVisits h3 {
+.allVisits h3, .allItems h3 {
     margin-bottom: 1.5rem;
 }
 
-.allVisits table {
+.allVisits table, .allItems table {
     width: 100%;
 }
 
-.allVisits table th {
+.allVisits table th, .allItems table th {
     background-color: rgb(26, 92, 169);
     padding: .5rem;
     color: #fff;
 }
 
-.allVisits table td {
+.allVisits table td, .allItems table td {
     padding: .5rem;
 }
 

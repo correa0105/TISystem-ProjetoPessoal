@@ -3,7 +3,93 @@
 
 <div class="shopping">
 
+    <form action="/shopping/add" class="shopping-container" method="POST">
+        <div class="container-form-container">
+            <div class="form-container">
+                <label for="item">Item</label>
+                <input type="text" name="item" placeholder="Nome do item">
+            </div>
+            <div class="form-container">
+                <label for="shop">Loja</label>
+                <input type="text" name="shop" placeholder="Loja da compra">
+            </div>
+            <div class="form-container">
+                <label for="local">Unidade</label>
+                <select name="local" id="local">
+                    <option value="Bento">Bento</option>
+                    <option value="Protasio">Protasio</option>
+                    <option value="Cavalhada">Cavalhada</option>
+                    <option value="Azenha">Azenha</option>
+                    <option value="Andradas">Andradas</option>
+                    <option value="24 de Outubro">24 de Outubro</option>
+                    <option value="Dr Flores">Dr Flores</option>
+                    <option value="Zona Sul">Zona Sul</option>
+                    <option value="Alvorda">Alvorda</option>
+                    <option value="Viamão">Viamão</option>
+                    <option value="Cachoeirinha">Cachoeirinha</option>
+                    <option value="Gravatai Centro">Gravatai Centro</option>
+                    <option value="Gravatai 67">Gravatai 67</option>
+                    <option value="Canoas Centro">Canoas Centro</option>
+                    <option value="Boqueirão">Boqueirão</option>
+                    <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                    <option value="Novo Hamburgo">Novo Hamburgo</option>
+                    <option value="São Leopoldo">São Leopoldo</option>
+                    <option value="Caxias Centro">Caxias Centro</option>
+                    <option value="Caxias Shoppin">Caxias Shopping</option>
+                    <option value="Menino Deus">Menino Deus</option>
+                    <option value="Tri Esportes">Tri Esportes</option>
+                    <option value="Orla">Orla</option>
+                </select>
+            </div>
+            <div class="form-container">
+                <label for="description">Descrição</label>
+                <textarea name="description" cols="30" rows="1" placeholder="Descrição do produto"></textarea>
+            </div>
+            <div class="form-container">
+                <label for="deliveryDate">Data de Entrega</label>
+                <input type="date" name="deliveryDate">
+            </div>
+        </div>
+        <input type="submit" class="submit" value="Registrar">
+    </form>
     
+    <div class="allItems">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Unidade</th>
+                <th>Descrição</th>
+                <th>Data de Entrega</th>
+                <th>Status</th>
+                <th>Editar</th>
+            </tr>
+            <% for(let item of items) { %>
+            <tr>
+                <td class="item"><%= item.item %></td>
+                <td class="item"><%= item.local %></td>
+                <td class="item"><%= item.description %></td>
+                <td class="item"><%= item.deliveryDate %></td>
+                <% if(item.delivered){ %>
+                    <td class="item">Entregue</td>
+                <% } else { %>
+                    <td class="item">Pendente</td>
+                <% } %>
+                <td class="actions">
+                    <form action="/shopping/updatestatus" method="POST">
+                        <input type="hidden" name="id" value="<%= item.id %>">
+                        <input type="hidden" name="delivered" value="<%= item.delivered %>">
+                        <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
+                    </form>
+                    <form action="/shopping/remove" method="POST">
+                        <input type="hidden" name="id" value="<%= item.id %>">
+                        <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+
 </div>
 
 <%- include("includes/footer"); %>
