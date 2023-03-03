@@ -1,0 +1,641 @@
+<%- include("includes/head"); %>
+<%- include("partials/header"); %>
+
+<div class="visits">
+
+    <form action="/visits/edit" class="visit-container" method="POST">
+        <div class="container-form-container">
+            <input type="hidden" name="id" value="<%= visit.id %>">
+            <div class="form-container">
+                <label for="local">Unidade</label>
+                <select name="local" id="local">
+                    <% if(visit.local === 'Bento'){ %>
+                    <% } else if (visit.local === 'Bento') { %>
+                        <option value="Bento" selected>Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Protasio') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio" selected>Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Cavalhada') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada" selected>Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Azenha') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha" selected>Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Andradas') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas" selected>Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === '24 de Outubro') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro" selected>24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Dr Flores') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores" selected>Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Zona Sul') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul" selected>Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Alvorada') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda" selected>Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Viamão') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão" selected>Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Cachoeirinha') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha" selected>Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Gravatai Centro') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro" selected>Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Gravatai 67') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67" selected>Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Canoas Centro') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro" selected>Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Boqueirão') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão" selected>Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option> 
+                    <% } else if (visit.local === 'Mauricio cardoso') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso" selected>Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Novo Hamburgo') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo" selected>Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'São Leopoldo') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo" selected>São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Caxias Centro') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro" selected>Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Caxias Shopping') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shopping" selected>Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Menino Deus') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus" selected>Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else if (visit.local === 'Tri Esportes') { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes" selected>Tri Esportes</option>
+                        <option value="Orla">Orla</option>
+                    <% } else { %>
+                        <option value="Bento">Bento</option>
+                        <option value="Protasio">Protasio</option>
+                        <option value="Cavalhada">Cavalhada</option>
+                        <option value="Azenha">Azenha</option>
+                        <option value="Andradas">Andradas</option>
+                        <option value="24 de Outubro">24 de Outubro</option>
+                        <option value="Dr Flores">Dr Flores</option>
+                        <option value="Zona Sul">Zona Sul</option>
+                        <option value="Alvorda">Alvorda</option>
+                        <option value="Viamão">Viamão</option>
+                        <option value="Cachoeirinha">Cachoeirinha</option>
+                        <option value="Gravatai Centro">Gravatai Centro</option>
+                        <option value="Gravatai 67">Gravatai 67</option>
+                        <option value="Canoas Centro">Canoas Centro</option>
+                        <option value="Boqueirão">Boqueirão</option>
+                        <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                        <option value="Novo Hamburgo">Novo Hamburgo</option>
+                        <option value="São Leopoldo">São Leopoldo</option>
+                        <option value="Caxias Centro">Caxias Centro</option>
+                        <option value="Caxias Shoppin">Caxias Shopping</option>
+                        <option value="Menino Deus">Menino Deus</option>
+                        <option value="Tri Esportes">Tri Esportes</option>
+                        <option value="Orla" selected>Orla</option>
+                    <% } %>
+                    <option value="Bento">Bento</option>
+                    <option value="Protasio">Protasio</option>
+                    <option value="Cavalhada">Cavalhada</option>
+                    <option value="Azenha">Azenha</option>
+                    <option value="Andradas">Andradas</option>
+                    <option value="24 de Outubro">24 de Outubro</option>
+                    <option value="Dr Flores">Dr Flores</option>
+                    <option value="Zona Sul">Zona Sul</option>
+                    <option value="Alvorda">Alvorda</option>
+                    <option value="Viamão">Viamão</option>
+                    <option value="Cachoeirinha">Cachoeirinha</option>
+                    <option value="Gravatai Centro">Gravatai Centro</option>
+                    <option value="Gravatai 67">Gravatai 67</option>
+                    <option value="Canoas Centro">Canoas Centro</option>
+                    <option value="Boqueirão">Boqueirão</option>
+                    <option value="Mauricio Cardoso">Mauricio Cardoso</option>
+                    <option value="Novo Hamburgo">Novo Hamburgo</option>
+                    <option value="São Leopoldo">São Leopoldo</option>
+                    <option value="Caxias Centro">Caxias Centro</option>
+                    <option value="Caxias Shoppin">Caxias Shopping</option>
+                    <option value="Menino Deus">Menino Deus</option>
+                    <option value="Tri Esportes">Tri Esportes</option>
+                    <option value="Orla">Orla</option>
+                </select>
+            </div>
+            <div class="form-container">
+                <label for="date">Data</label>
+                <input type="date" name="date" value="<%= visit.date %>">
+            </div>
+            <div class="form-container">
+                <label for="resume">Resumo</label>
+                <textarea name="resume" cols="30" rows="1" placeholder="Breve resumo"><%= visit.resume %></textarea>
+            </div>
+        </div>
+        <input type="submit" class="submit" value="Agendar">
+    </form>
+
+    <div class="allVisits">
+        <table>
+            <tr>
+                <th>Unidade</th>
+                <th>Data</th>
+                <th>Resumo</th>
+                <th>Editar</th>
+            </tr>
+            <% for(let visit of visits) { %>
+            <tr>
+                <% if(visit.done){ %>
+                    <td class="visit done"><%= visit.local %></td>
+                    <td class="visit done"><%= visit.date %></td>
+                    <td class="visit done"><%= visit.resume %></td>
+                <% } else { %>
+                    <td><%= visit.local %></td>
+                    <td><%= visit.date %></td>
+                    <td><%= visit.resume %></td>
+                <% } %>
+                <td class="actions">
+                    <form action="/visits/updatestatus" method="POST">
+                        <input type="hidden" name="id" value="<%= visit.id %>">
+                        <input type="hidden" name="done" value="<%= visit.done %>">
+                        <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
+                    </form>
+                    <form action="/visits/remove" method="POST">
+                        <input type="hidden" name="id" value="<%= visit.id %>">
+                        <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
+                    </form>
+                    <a href="/visits/edit/<%= visit.id %>"><i class="bi bi-pen"></i></a>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+    
+</div>
+
+<%- include("includes/footer"); %>

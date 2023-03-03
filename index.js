@@ -8,7 +8,8 @@ const Visit = require('./models/Visit')
 
 const tasksRoutes = require('./routes/tasksRoutes')
 const visitsRoutes = require('./routes/visitsRoutes')
-const shoppingsRoutes = require('./routes/shoppingRoutes')
+const shoppingRoutes = require('./routes/shoppingRoutes')
+const stockRoutes = require('./routes/stockRoutes')
 
 const app = express()
 
@@ -27,7 +28,8 @@ app.use(express.static('public'));
 
 app.use('/tasks', tasksRoutes)
 app.use('/visits', visitsRoutes)
-app.use('/shopping', shoppingsRoutes)
+app.use('/shopping', shoppingRoutes)
+app.use('/stock', stockRoutes)
 
 conn.sync()
     .then(() => app.listen(3000))

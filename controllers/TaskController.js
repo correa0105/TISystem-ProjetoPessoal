@@ -18,7 +18,7 @@ module.exports = class TaskController {
 
     static async showTasks(req, res) {
         
-        const tasks = await Task.findAll({ raw: true })
+        const tasks = await Task.findAll({ raw: true, order: ['done']})
 
         const taskHight = await Task.count({ where: { priority: 'hight',  done: false }})
         const taskMedium = await Task.count({ where: { priority: 'medium',  done: false }})
@@ -41,7 +41,7 @@ module.exports = class TaskController {
         const id = req.params.id
 
         const task = await Task.findOne({ where: { id: id }})
-        const tasks = await Task.findAll({ raw: true })
+        const tasks = await Task.findAll({ raw: true, order: ['done'] })
 
         const taskHight = await Task.count({ where: { priority: 'hight',  done: false }})
         const taskMedium = await Task.count({ where: { priority: 'medium',  done: false }})
