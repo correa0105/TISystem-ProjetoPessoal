@@ -1,0 +1,40 @@
+<%- include("includes/head"); %>
+<%- include("partials/header"); %>
+
+<div class="tasksSolved">
+
+        <div class="allTasksSolved">
+            <table>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                    <th>Prioridade</th>
+                    <th>Excluir</th>
+                </tr>
+                <% for(let task of tasks) { %>
+                <tr>
+                    <td><%= task.title %></td>
+                    <td><%= task.description %></td>
+                    <% if(task.priority === 'hight') { %>
+                        <td class="hightSolved"><i class="bi bi-bookmark-fill iconeSolved"></i></td>
+                    <% } %>
+                    <% if(task.priority === 'medium') { %>
+                        <td class="mediumSolved"><i class="bi bi-bookmark-fill iconeSolved"></i></td>
+                    <% } %>
+                    <% if(task.priority === 'low') { %>
+                        <td class="lowSolved"><i class="bi bi-bookmark-fill iconeSolved"></i></td>
+                    <% } %>
+                    <td class="actions">
+                        <form action="/tasks/removesolved" method="POST">
+                            <input type="hidden" name="id" value="<%= task.id %>">
+                            <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </div> 
+
+</div>
+
+<%- include("includes/footer"); %>

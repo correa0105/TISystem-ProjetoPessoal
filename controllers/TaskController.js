@@ -18,13 +18,20 @@ module.exports = class TaskController {
 
     static async showTasks(req, res) {
         
-        const tasks = await Task.findAll({ raw: true, order: ['done']})
+        const tasks = await Task.findAll({ raw: true, where: { done: false }})
 
         const taskHight = await Task.count({ where: { priority: 'hight',  done: false }})
         const taskMedium = await Task.count({ where: { priority: 'medium',  done: false }})
         const taskLow = await Task.count({ where: { priority: 'low',  done: false }})
 
         res.render('tasks', { tasks, taskHight, taskMedium, taskLow })
+    }
+
+    static async showTasksSolved(req, res) {
+        
+        const tasks = await Task.findAll({ raw: true, where: { done: true }})
+
+        res.render('tasksSolved', { tasks: tasks })
     }
 
     static async removeTask(req, res) {
@@ -34,6 +41,15 @@ module.exports = class TaskController {
         await Task.destroy({ where: { id: id }})
 
         res.redirect('/tasks')
+    }
+
+    static async removeTaskSolved(req, res) {
+        
+        const id = req.body.id
+
+        await Task.destroy({ where: { id: id }})
+
+        res.redirect('/tasks/solvedtasks')
     }
 
     static async updateTask(req, res) {
