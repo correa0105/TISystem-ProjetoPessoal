@@ -2,12 +2,11 @@
 <%- include("partials/header"); %>
 
 <div class="visits">
-
-    <form action="/visits/add" class="visit-container" method="POST">
-        <div class="container-form-container">
-            <div class="form-container">
-                <label for="local">Unidade</label>
-                <select name="local" id="local">
+    <p class="mb-2 p-1 border-bottom">Cadastrar</p>
+    <section class="bg-light p-3 rounded-3">
+        <form action="/visits/add" method="POST" class="d-flex flex gap-2 gap-sm-3 flex-wrap">
+            <div class="form-group col-xl-2 col-12">
+                <select name="local" id="local" class="form-control">
                     <option value="Bento">Bento</option>
                     <option value="Protasio">Protasio</option>
                     <option value="Cavalhada">Cavalhada</option>
@@ -33,54 +32,54 @@
                     <option value="Orla">Orla</option>
                 </select>
             </div>
-            <div class="form-container">
-                <label for="date">Data</label>
-                <input type="date" name="date">
+            <div class="form-group col-xl-2 col-12">
+                <input class="form-control" type="date" name="date">
             </div>
-            <div class="form-container">
-                <label for="resume">Resumo</label>
-                <textarea name="resume" cols="30" rows="1" placeholder="Breve resumo"></textarea>
+            <div class="form-group col-xl-2 col-12">
+                <textarea class="form-control" name="resume" rows="1">Descreva a atividade</textarea>
             </div>
-        </div>
-        <input type="submit" class="submit" value="Agendar">
-    </form>
-
-    <div class="allVisits">
-        <table>
-            <tr>
-                <th>Unidade</th>
-                <th>Data</th>
-                <th>Resumo</th>
-                <th>Editar</th>
-            </tr>
-            <% for(let visit of visits) { %>
-            <tr>
-                <% if(visit.done){ %>
-                    <td class="visit done"><%= visit.local %></td>
-                    <td class="visit done"><%= visit.date %></td>
-                    <td class="visit done"><%= visit.resume %></td>
-                <% } else { %>
-                    <td><%= visit.local %></td>
-                    <td><%= visit.date %></td>
-                    <td><%= visit.resume %></td>
-                <% } %>
-                <td class="actions">
-                    <form action="/visits/updatestatus" method="POST">
-                        <input type="hidden" name="id" value="<%= visit.id %>">
-                        <input type="hidden" name="done" value="<%= visit.done %>">
-                        <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
-                    </form>
-                    <form action="/visits/remove" method="POST">
-                        <input type="hidden" name="id" value="<%= visit.id %>">
-                        <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
-                    </form>
-                    <a href="/visits/edit/<%= visit.id %>"><i class="bi bi-pen"></i></a>
-                </td>
-            </tr>
-            <% } %>
+            <input type="submit" class="btn btn-primary ms-auto col-xl-2 col-12 mt-1 mt-sm-0" value="Registrar">
+        </form>
+    </section>
+    <section class="bg-light p-3 rounded-2 mt-4">
+        <p>Visitas técnicas</p>
+        <table class="table table-striped table-hover">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col">Unidade</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Resumo</th>
+                    <th scope="col">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let visit of visits) { %>
+                    <tr>
+                        <% if(visit.done){ %>
+                        <td class="visit done align-middle"><%= visit.local %></td>
+                        <td class="visit done align-middle"><%= visit.date %></td>
+                        <td class="visit done align-middle"><%= visit.resume %></td>
+                        <% } else { %>
+                        <td class="align-middle"><%= visit.local %></td>
+                        <td class="align-middle"><%= visit.date %></td>
+                        <td class="align-middle"><%= visit.resume %></td>
+                        <% } %>
+                        <td class="d-flex flex-direction-row gap-2 h-100">
+                        <form action="/visits/updatestatus" method="POST">
+                            <input type="hidden" name="id" value="<%= visit.id %>">
+                            <input type="hidden" name="done" value="<%= visit.done %>">
+                            <button type="submit" class="btn p-1"><a href=""><i class="bi bi-check2"></i></a></button>
+                        </form>
+                        <form action="/visits/remove" method="POST">
+                            <input type="hidden" name="id" value="<%= visit.id %>">
+                            <button type="submit" class="btn p-1"><a href=""><i class="bi bi-x"></i></a></button>
+                        </form>
+                        <a href="/visits/edit/<%= visit.id %>" class="btn p-1"><i class="bi bi-pen"></i></a></td>
+                    </tr>
+                    <% } %>
+            </tbody>
         </table>
-    </div>
-    
+    </section>
 </div>
 
 <%- include("includes/footer"); %>

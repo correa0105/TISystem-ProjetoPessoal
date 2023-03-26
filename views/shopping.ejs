@@ -2,20 +2,17 @@
 <%- include("partials/header"); %>
 
 <div class="shopping">
-
-    <form action="/shopping/add" class="shopping-container" method="POST">
-        <div class="container-form-container">
-            <div class="form-container">
-                <label for="item">Item</label>
-                <input type="text" name="item" placeholder="Nome do item">
+    <p class="mb-2 p-1 border-bottom">Cadastrar</p>
+    <section class="bg-light p-3 rounded-3">
+        <form action="/shopping/add" method="POST" class="d-flex flex gap-2 gap-sm-3 flex-wrap">
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="item" placeholder="Item">
             </div>
-            <div class="form-container">
-                <label for="shop">Loja</label>
-                <input type="text" name="shop" placeholder="Loja da compra">
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="shop" placeholder="Loja">
             </div>
-            <div class="form-container">
-                <label for="local">Unidade</label>
-                <select name="local" id="local">
+            <div class="form-group col-xl-2 col-12">
+                <select name="local" id="local" class="form-control">
                     <option value="Bento">Bento</option>
                     <option value="Protasio">Protasio</option>
                     <option value="Cavalhada">Cavalhada</option>
@@ -41,55 +38,56 @@
                     <option value="Orla">Orla</option>
                 </select>
             </div>
-            <div class="form-container">
-                <label for="description">Descrição</label>
-                <textarea name="description" cols="30" rows="1" placeholder="Descrição do produto"></textarea>
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="description" placeholder="Descrição">
             </div>
-            <div class="form-container">
-                <label for="deliveryDate">Data de Entrega</label>
-                <input type="date" name="deliveryDate">
+            <div class="form-group col-xl-2 col-12">
+                <input type="date" class="form-control" name="deliveryDate" placeholder="Data de entrega">
             </div>
-        </div>
-        <input type="submit" class="submit" value="Registrar">
-    </form>
-    
-    <div class="allItems">
-        <table>
-            <tr>
-                <th>Item</th>
-                <th>Unidade</th>
-                <th>Descrição</th>
-                <th>Data de Entrega</th>
-                <th>Status</th>
-                <th>Editar</th>
-            </tr>
-            <% for(let item of items) { %>
-            <tr>
-                <td class="item"><%= item.item %></td>
-                <td class="item"><%= item.local %></td>
-                <td class="item"><%= item.description %></td>
-                <td class="item"><%= item.deliveryDate %></td>
-                <% if(item.delivered){ %>
-                    <td class="item">Entregue</td>
-                <% } else { %>
-                    <td class="item">Pendente</td>
-                <% } %>
-                <td class="actions">
-                    <form action="/shopping/updatestatus" method="POST">
-                        <input type="hidden" name="id" value="<%= item.id %>">
-                        <input type="hidden" name="delivered" value="<%= item.delivered %>">
-                        <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
-                    </form>
-                    <form action="/shopping/remove" method="POST">
-                        <input type="hidden" name="id" value="<%= item.id %>">
-                        <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
-                    </form>
-                </td>
-            </tr>
-            <% } %>
+            <input type="submit" class="btn btn-primary ms-auto col-xl-1 col-12 mt-1 mt-sm-0" value="Registrar">
+        </form>
+    </section>
+    <section class="bg-light p-3 rounded-2 mt-4">
+        <p>Itens Comprados</p>
+        <table class="table table-striped table-hover">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Unidade</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Data de Entrega</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let item of items) { %>
+                    <tr>
+                        <td class="align-middle"><%= item.item %></td>
+                        <td class="align-middle"><%= item.local %></td>
+                        <td class="align-middle"><%= item.description %></td>
+                        <td class="align-middle"><%= item.deliveryDate %></td>
+                        <% if(item.delivered){ %>
+                            <td class="align-middle">Entregue</td>
+                        <% } else { %>
+                            <td class="align-middle">Pendente</td>
+                        <% } %>
+                        <td class="d-flex">
+                            <form action="/shopping/updatestatus" method="POST">
+                                <input type="hidden" name="id" value="<%= item.id %>">
+                                <input type="hidden" name="delivered" value="<%= item.delivered %>">
+                                <button type="submit" class="btn"><a href=""><i class="bi bi-check2"></i></a></button>
+                            </form>
+                            <form action="/shopping/remove" method="POST">
+                                <input type="hidden" name="id" value="<%= item.id %>">
+                                <button type="submit" class="btn"><a href=""><i class="bi bi-x"></i></a></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
         </table>
-    </div>
-
+    </section>
 </div>
 
 <%- include("includes/footer"); %>

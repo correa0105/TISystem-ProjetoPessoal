@@ -2,39 +2,42 @@
 <%- include("partials/header"); %>
 
 <div class="tasksSolved">
-
-        <div class="allTasksSolved">
-            <table>
+    <section class="bg-light p-3 rounded-2 mt-4">
+        <p>Tarefas Concluidas</p>
+        <table class="table table-striped table-hover">
+            <thead class="bg-primary text-white">
                 <tr>
                     <th>Titulo</th>
                     <th>Descrição</th>
                     <th>Prioridade</th>
                     <th>Excluir</th>
                 </tr>
+            </thead>
+            <tbody>
                 <% for(let task of tasks) { %>
-                <tr>
-                    <td><%= task.title %></td>
-                    <td><%= task.description %></td>
-                    <% if(task.priority === 'hight') { %>
-                        <td class="hightSolved"><i class="bi bi-bookmark-fill iconeSolved"></i></td>
+                    <tr>
+                        <td class="align-middle"><%= task.title %></td>
+                        <td class="align-middle"><%= task.description %></td>
+                        <% if(task.priority === 'hight') { %>
+                            <td class="text-danger align-middle"><i class="bi bi-bookmark-fill"></i></td>
+                        <% } %>
+                        <% if(task.priority === 'medium') { %>
+                            <td class="text-warning align-middle"><i class="bi bi-bookmark-fill"></i></td>
+                        <% } %>
+                        <% if(task.priority === 'low') { %>
+                            <td class="text-success align-middle"><i class="bi bi-bookmark-fill"></i></td>
+                        <% } %>
+                        <td class="actions">
+                            <form action="/tasks/removesolved" method="POST">
+                                <input type="hidden" name="id" value="<%= task.id %>">
+                                <button type="submit" class="btn"><a href=""><i class="bi bi-x"></i></a></button>
+                            </form>
+                        </td>
+                    </tr>
                     <% } %>
-                    <% if(task.priority === 'medium') { %>
-                        <td class="mediumSolved"><i class="bi bi-bookmark-fill iconeSolved"></i></td>
-                    <% } %>
-                    <% if(task.priority === 'low') { %>
-                        <td class="lowSolved"><i class="bi bi-bookmark-fill iconeSolved"></i></td>
-                    <% } %>
-                    <td class="actions">
-                        <form action="/tasks/removesolved" method="POST">
-                            <input type="hidden" name="id" value="<%= task.id %>">
-                            <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
-                        </form>
-                    </td>
-                </tr>
-                <% } %>
-            </table>
-        </div> 
-
+            </tbody>
+        </table>
+    </section>
 </div>
 
 <%- include("includes/footer"); %>

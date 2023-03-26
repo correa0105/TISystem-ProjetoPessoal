@@ -1,19 +1,20 @@
-<aside>
-    <div class="menu-container">
-        <h1>TI System</h1>
-        <ul>
-            <li><a href="/visits">Visitas Técnicas</a></li>
-            <li>
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Tarefas</button>
-                    <div id="myDropdown" class="dropdown-content">
-                      <a href="/tasks">Pendetes</a>
-                      <a href="/tasks/solvedtasks">Resolvidas</a>
-                    </div>
-                  </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-2 px-md-4">
+    <a class="navbar-brand" href="#">TI System</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item active"><a class="nav-link" href="/visits">Visitas Técnicas</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarefas</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/tasks">Pendetes</a>
+                    <a class="dropdown-item" href="/tasks/solvedtasks">Resolvidas</a>
+                </div>
             </li>
-            <li><a href="/shopping">Compras</a></li>
-            <li><a href="/stock">Estoque</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shopping">Compras</a></li>
+            <li class="nav-item"><a class="nav-link" href="/stock">Estoque</a></li>
         </ul>
     </div>
-</aside>
+</nav>

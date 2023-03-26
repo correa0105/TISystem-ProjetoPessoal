@@ -2,158 +2,144 @@
 <%- include("partials/header"); %>
 
 <div class="tasks">
-
-    <div class="createTask">
-        <form action="/tasks/edit" method="POST" class="task-container">
-            <div class="container-form-container">
-                <input type="hidden" name="id" value="<%= task.id %>">
-                <div class="form-container">
-                    <label for="title">Titulo</label>
-                    <input type="text" name="title" placeholder="Titulo da atividade" value="<%= task.title %>">
-                </div>
-                <div class="form-container">
-                    <label for="priority">Prioridade</label>
-                    <select name="priority" id="priority">
-                        <% if(task.priority === 'hight'){ %>
-                            <option value="hight" selected>Alta</option>
-                            <option value="medium">Média</option>
-                            <option value="low">Baixa</option>
-                        <% } else if(task.priority === 'medium'){ %>
-                            <option value="hight">Alta</option>
-                            <option value="medium" selected>Média</option>
-                            <option value="low">Baixa</option>
-                        <% } else { %>
-                            <option value="hight">Alta</option>
-                            <option value="medium">Média</option>
-                            <option value="low" selected>Baixa</option>
-                        <% } %>
-                    </select>
-                </div>
-                <div class="form-container">
-                    <label for="description">Descrição</label>
-                    <textarea name="description" id="" cols="30" rows="1" placeholder="Descreva a atividade"><%= task.description %></textarea>
-                </div>
+    <p class="mb-2 p-1 border-bottom">Editar</p>
+    <section class="bg-light p-3 rounded-3">
+        <form action="/tasks/edit" method="POST" class="d-flex flex gap-2 gap-sm-3 flex-wrap">
+            <input type="hidden" name="id" value="<%= task.id %>">
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="title" placeholder="Titulo da atividade" value="<%= task.title %>">
             </div>
-            <input type="submit" class="submit" value="Registrar">
-        </form>
-    </div>
-
-
-    <div class="allTasks">
-
-        <div class="container-priority">
-            <div class="headerPriority">
-                <div class="containerPriorityIcon">
-                    <h4>Alta Prioridade</h4>
-                    <span class="hight"><i class="bi bi-bookmark-fill"></i></span>
-                </div>
-                <span class="qntdUnsolved"><%= taskHight %></span>
-            </div>
-            <ul>
-                <% for(let task of tasks) { %>
-                    
+            <div class="form-group col-xl-2 col-12">
+                <select name="priority" class="form-control" id="priority">
                     <% if(task.priority === 'hight'){ %>
-                        <li>
-                            <% if(task.done){ %>
-                                <a href="" class="title done"><%= task.title %></a>
-                            <% } else { %>
-                                <a href=""><%= task.title %></a>
-                            <% } %>
-                            
-                            <div class="actions">
-                                <form action="/tasks/updatestatus" method="POST">
-                                    <input type="hidden" name="id" value="<%= task.id %>">
-                                    <input type="hidden" name="done" value="<%= task.done %>">
-                                    <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
-                                </form>
-                                <form action="/tasks/remove" method="POST">
-                                    <input type="hidden" name="id" value="<%= task.id %>">
-                                    <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
-                                </form>
-                                <a href="/tasks/edit/<%= task.id %>"><i class="bi bi-pen"></i></a>
-                            </div>
-                        </li>
+                        <option value="hight" selected>Alta</option>
+                        <option value="medium">Média</option>
+                        <option value="low">Baixa</option>
+                    <% } else if(task.priority === 'medium'){ %>
+                        <option value="hight">Alta</option>
+                        <option value="medium" selected>Média</option>
+                        <option value="low">Baixa</option>
+                    <% } else { %>
+                        <option value="hight">Alta</option>
+                        <option value="medium">Média</option>
+                        <option value="low" selected>Baixa</option>
                     <% } %>
-                <% } %>
-            </ul>
-        </div>
-    
-        <div class="container-priority">
-            <div class="headerPriority">
-                <div class="containerPriorityIcon">
-                    <h4>Media Prioridade</h4>
-                    <span class="medium"><i class="bi bi-bookmark-fill"></i></span>
-                </div>
-                <span class="qntdUnsolved"><%= taskMedium %></span>
+                </select>
             </div>
-            <ul>
-                <% for(let task of tasks) { %>
-                    
-                    <% if(task.priority === 'medium'){ %>
-                        <li>
-                            <% if(task.done){ %>
-                                <a href="" class="title done"><%= task.title %></a>
-                            <% } else { %>
-                                <a href=""><%= task.title %></a>
-                            <% } %>
-                            
-                            <div class="actions">
-                                <form action="/tasks/updatestatus" method="POST">
-                                    <input type="hidden" name="id" value="<%= task.id %>">
-                                    <input type="hidden" name="done" value="<%= task.done %>">
-                                    <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
-                                </form>
-                                <form action="/tasks/remove" method="POST">
-                                    <input type="hidden" name="id" value="<%= task.id %>">
-                                    <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
-                                </form>
-                                <a href="/tasks/edit/<%= task.id %>"><i class="bi bi-pen"></i></a>
-                            </div>
-                        </li>
-                    <% } %>
-                <% } %>
-            </ul>
-        </div>
-    
-        <div class="container-priority">
-            <div class="headerPriority">
-                <div class="containerPriorityIcon">
-                    <h4>Baixa Prioridade</h4>
-                    <span class="low"><i class="bi bi-bookmark-fill"></i></span>
-                </div>
-                <span class="qntdUnsolved"><%= taskLow %></span>
+            <div class="form-group col-xl-2 col-12">
+                <textarea class="form-control" name="description" rows="1"><%= task.description %></textarea>
             </div>
-            <ul>
-                <% for(let task of tasks) { %>
-                    
-                    <% if(task.priority === 'low'){ %>
-                        <li>
-                            <% if(task.done){ %>
-                                <a href="" class="title done"><%= task.title %></a>
-                            <% } else { %>
-                                <a href=""><%= task.title %></a>
-                            <% } %>
-                            
-                            <div class="actions">
-                                <form action="/tasks/updatestatus" method="POST">
-                                    <input type="hidden" name="id" value="<%= task.id %>">
-                                    <input type="hidden" name="done" value="<%= task.done %>">
-                                    <button type="submit"><a href=""><i class="bi bi-check2"></i></a></button>
-                                </form>
-                                <form action="/tasks/remove" method="POST">
-                                    <input type="hidden" name="id" value="<%= task.id %>">
-                                    <button type="submit"><a href=""><i class="bi bi-x"></i></a></button>
-                                </form>
-                                <a href="/tasks/edit/<%= task.id %>"><i class="bi bi-pen"></i></a>
-                            </div>
-                        </li>
-                    <% } %>
-                <% } %>
-            </ul>
-        </div>
-        
-    </div>
+            <input type="submit" class="btn btn-primary ms-auto col-xl-2 col-12 mt-1 mt-sm-0" value="Registrar">
+        </form>
+    </section>
+    <section class="d-flex flex-wrap gap-2 p-3 mt-3 bg-light rounded-1">
 
+        <div class="d-flex flex-column bg-primary w-100 col-12 col-xl rounded-1 p-2">
+            <div class="d-flex justify-content-between mb-2 w-100">
+                <div class="d-flex gap-1">
+                    <p class="h5 text-white">Alta Prioridade</p>
+                    <span class="text-danger"><i class="bi bi-bookmark-fill"></i></span>
+                </div>
+                <span class="p-1 px-2 bg-white rounded-1"><%= taskHight %></span>
+            </div>
+            <ul class="m-0 p-0 bg-light">
+                <% for(let task of tasks) { %>
+                    <% if(task.priority === 'hight'){ %>
+                        <li class="d-flex align-items-center justify-content-between px-2 border-bottom">
+                            <% if(task.done){ %>
+                                <a href=""><%= task.title %></a>
+                            <% } else { %>
+                                <a href=""><%= task.title %></a>
+                            <% } %>
+                            
+                            <div class="d-flex flex-direction-row">
+                                <form action="/tasks/updatestatus" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <input type="hidden" name="done" value="<%= task.done %>">
+                                    <button type="submit" class="btn"><a href=""><i class="bi bi-check2"></i></a></button>
+                                </form>
+                                <form action="/tasks/remove" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <button type="submit" class="btn"><a href=""><i class="bi bi-x"></i></a></button>
+                                </form>
+                                <a href="/tasks/edit/<%= task.id %>" class="btn"><i class="bi bi-pen"></i></a>
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </div>
+        <div class="d-flex flex-column bg-primary w-100 col-12 col-xl rounded-1 p-2">
+            <div class="d-flex justify-content-between mb-2 w-100">
+                <div class="d-flex gap-1">
+                    <p class="h5 text-white">Média Prioridade</p>
+                    <span class="text-warning"><i class="bi bi-bookmark-fill"></i></span>
+                </div>
+                <span class="p-1 px-2 bg-white rounded-1"><%= taskHight %></span>
+            </div>
+            <ul class="m-0 p-0 bg-light">
+                <% for(let task of tasks) { %>
+                    <% if(task.priority === 'medium'){ %>
+                        <li class="d-flex align-items-center justify-content-between px-2 border-bottom">
+                            <% if(task.done){ %>
+                                <a href=""><%= task.title %></a>
+                            <% } else { %>
+                                <a href=""><%= task.title %></a>
+                            <% } %>
+                            
+                            <div class="d-flex flex-direction-row">
+                                <form action="/tasks/updatestatus" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <input type="hidden" name="done" value="<%= task.done %>">
+                                    <button type="submit" class="btn"><a href=""><i class="bi bi-check2"></i></a></button>
+                                </form>
+                                <form action="/tasks/remove" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <button type="submit" class="btn"><a href=""><i class="bi bi-x"></i></a></button>
+                                </form>
+                                <a href="/tasks/edit/<%= task.id %>" class="btn"><i class="bi bi-pen"></i></a>
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </div>
+        <div class="d-flex flex-column bg-primary w-100 col-12 col-xl rounded-1 p-2">
+            <div class="d-flex justify-content-between mb-2 w-100">
+                <div class="d-flex gap-1">
+                    <p class="h5 text-white">Baixa Prioridade</p>
+                    <span class="text-success"><i class="bi bi-bookmark-fill"></i></span>
+                </div>
+                <span class="p-1 px-2 bg-white rounded-1"><%= taskHight %></span>
+            </div>
+            <ul class="m-0 p-0 bg-light">
+                <% for(let task of tasks) { %>
+                    <% if(task.priority === 'low'){ %>
+                        <li class="d-flex align-items-center justify-content-between px-2 border-bottom">
+                            <% if(task.done){ %>
+                                <a href=""><%= task.title %></a>
+                            <% } else { %>
+                                <a href=""><%= task.title %></a>
+                            <% } %>
+                            
+                            <div class="d-flex flex-direction-row">
+                                <form action="/tasks/updatestatus" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <input type="hidden" name="done" value="<%= task.done %>">
+                                    <button type="submit" class="btn"><a href=""><i class="bi bi-check2"></i></a></button>
+                                </form>
+                                <form action="/tasks/remove" method="POST">
+                                    <input type="hidden" name="id" value="<%= task.id %>">
+                                    <button type="submit" class="btn"><a href=""><i class="bi bi-x"></i></a></button>
+                                </form>
+                                <a href="/tasks/edit/<%= task.id %>" class="btn"><i class="bi bi-pen"></i></a>
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </div>
+    </section>
 </div>
 
 <%- include("includes/footer"); %>

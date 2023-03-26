@@ -3,14 +3,11 @@ const Visit = require('../models/Visit')
 module.exports = class VisitController {
 
     static async visit(req, res) {
-
         const visits = await Visit.findAll({ raw: true })
-
         res.render('visits', { visits })
     }
 
     static async visitSave(req, res) {
-
         const visit = {
             local: req.body.local,
             date: req.body.date,
@@ -24,7 +21,6 @@ module.exports = class VisitController {
     }
 
     static async visitRemove(req, res) {
-
         const id = req.body.id
 
         await Visit.destroy({ where: { id: id }})
@@ -33,7 +29,6 @@ module.exports = class VisitController {
     }
 
     static async updateVisit(req, res) {
-        
         const id = req.params.id
 
         const visit = await Visit.findOne({ where: { id: id }})
@@ -43,7 +38,6 @@ module.exports = class VisitController {
     }
 
     static async updateVisitSave(req, res) {
-        
         const id = req.body.id
 
         const visit = {
@@ -58,7 +52,6 @@ module.exports = class VisitController {
     }
 
     static async toggleVisitStatus(req, res) {
-        
         const id = req.body.id
 
         const visit = {

@@ -2,9 +2,73 @@
 <%- include("partials/header"); %>
 
 <div class="stock">
-    
-    <h1>Em Manutenção</h1>
-
+    <p class="mb-2 p-1 border-bottom">Cadastrar</p>
+    <section class="bg-light p-3 rounded-3">
+        <form action="/stock/add" method="POST" class="d-flex flex gap-2 gap-sm-3 flex-wrap">
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="item" placeholder="Item">
+            </div>
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="mark" placeholder="Marca/Fabricante">
+            </div>
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="spec" placeholder="Especificações">
+            </div>
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="price" placeholder="Preço do Item">
+            </div>
+            <div class="form-group col-xl-2 col-12">
+                <input type="text" class="form-control" name="quantity" placeholder="Quantidade">
+            </div>
+            <input type="submit" class="btn btn-primary ms-auto col-xl-1 col-12 mt-1 mt-sm-0" value="Registrar">
+        </form>
+    </section>
+    <p class="mb-2 p-1 mt-3 border-bottom">Procurar</p>
+    <section>
+        <form action="/stock" method="GET">
+            <div class="input-group my-3">
+                <input type="text" class="border border-secondary form-control" placeholder="Digite o nome do item" name="search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button type="submit" class="btn bg-secondary text-white rounded-start-0" type="button"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <section class="bg-light p-3 rounded-2 mt-4">
+        <table class="table table-striped table-hover">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col" class="text-center">Item</th>
+                    <th scope="col" class="text-center">Marca</th>
+                    <th scope="col" class="text-center">Especificações</th>
+                    <th scope="col" class="text-center">Quantidade</th>
+                    <th scope="col" class="text-center">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let item of stock) { %>
+                <tr class="align-middle">
+                    <td><%= item.item %></td>
+                    <td><%= item.mark %></td>
+                    <td><%= item.spec %></td>
+                    <td><%= item.quantity %></td>
+                    <td class="d-flex gap-2 justify-content-center">
+                        <form action="/stock/alterQuantity" method="POST" class="d-flex gap-2">
+                            <input type="hidden" name="id" value="<%= item.id %>">
+                            <input type="number" placeholder="Add (+)" name="addQuantity" class="form-control d-flex">
+                            <input type="number" placeholder="Sub (-)" name="removeQuantity" class="form-control d-flex">
+                            <input type="submit" value="Retirar / Adiconar" class="btn btn-primary">
+                        </form>
+                        <form action="/stock/remove" method="POST" class="d-flex gap-2">
+                            <input type="hidden" name="id" value="<%= item.id %>">
+                            <input type="submit" value="Remover Item" class="btn btn-warning">
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </section>
 </div>
 
 <%- include("includes/footer"); %>

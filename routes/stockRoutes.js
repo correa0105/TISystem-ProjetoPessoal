@@ -3,8 +3,9 @@ const router = express.Router()
 
 const StockController = require('../controllers/StockController')
 
-router.get('/', StockController.stock)
 router.post('/add', StockController.itemSave)
 router.post('/remove', StockController.itemRemove)
+router.post('/alterQuantity', StockController.alterQuantity)
+router.get('/', StockController.stock)
 
 module.exports = router

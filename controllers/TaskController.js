@@ -3,7 +3,6 @@ const Task = require('../models/Task')
 module.exports = class TaskController {
 
     static async createTaskSave(req, res) {
-        
         const task = {
             title: req.body.title,
             description: req.body.description,
@@ -17,7 +16,6 @@ module.exports = class TaskController {
     }
 
     static async showTasks(req, res) {
-        
         const tasks = await Task.findAll({ raw: true, where: { done: false }})
 
         const taskHight = await Task.count({ where: { priority: 'hight',  done: false }})
@@ -28,14 +26,12 @@ module.exports = class TaskController {
     }
 
     static async showTasksSolved(req, res) {
-        
         const tasks = await Task.findAll({ raw: true, where: { done: true }})
 
         res.render('tasksSolved', { tasks: tasks })
     }
 
     static async removeTask(req, res) {
-        
         const id = req.body.id
 
         await Task.destroy({ where: { id: id }})
@@ -44,7 +40,6 @@ module.exports = class TaskController {
     }
 
     static async removeTaskSolved(req, res) {
-        
         const id = req.body.id
 
         await Task.destroy({ where: { id: id }})
@@ -53,11 +48,10 @@ module.exports = class TaskController {
     }
 
     static async updateTask(req, res) {
-        
         const id = req.params.id
 
         const task = await Task.findOne({ where: { id: id }})
-        const tasks = await Task.findAll({ raw: true, order: ['done'] })
+        const tasks = await Task.findAll({ raw: true, where: { done: false }})
 
         const taskHight = await Task.count({ where: { priority: 'hight',  done: false }})
         const taskMedium = await Task.count({ where: { priority: 'medium',  done: false }})
@@ -67,7 +61,6 @@ module.exports = class TaskController {
     }
 
     static async updateTaskSave(req, res) {
-        
         const id = req.body.id
 
         const task = {
@@ -82,7 +75,6 @@ module.exports = class TaskController {
     }
 
     static async toggleTaskStatus(req, res) {
-        
         const id = req.body.id
 
         const task = {
